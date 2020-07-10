@@ -1,0 +1,16 @@
+CREATE table if not exists mysqldb.product(
+    pro_id int(10) unique auto_increment,
+    sku int(10) unique,
+    title varchar(20),
+    primary key (pro_id)
+);
+
+create table if not exists  mysqldb.offer_price(
+    ofp_id int(10) unique  primary key ,
+    effetive_start_date date,
+    effetive_end_date date,
+    pro_id int(10) unique ,
+    price double(7,2),
+    type_cd varchar(20),
+    foreign key  offerprice(pro_id) references  mysqldb.product(pro_id)
+);
